@@ -1,0 +1,35 @@
+<select class="form-control form-control-lg mb-3" onChange={{action "switchBattleType" value="target.value"}}>
+  <option value="people">People</option>
+  <option value="starships">Starships</option>
+</select>
+
+<div class="row mb-3 justify-content-center">
+  <button type="button" class="btn btn-dark" onClick={{action "brawl"}}>Brawl</button>
+</div>
+
+<div class="row mb-3">
+  <div class="col-6 text-right">
+    <label>England:</label>
+    <span>{{arenaResults.EnglandScore}}</span>
+  </div>
+  <div class="col-6">
+    <span>{{arenaResults.BulgariaScore}}</span>
+    <label>:Bulgaria</label>
+  </div>
+</div>
+
+{{#if leftOpponent}}
+  {{component
+    activeActionTemplate
+    leftOpponent=leftOpponent
+    rightOpponent=rightOpponent
+  }}
+{{else}}
+  <div class="row px-3">
+    <div class="card col">
+      <div class="card-body">
+        <h5 class="card-title m-0">The arena is ready for brawling</h5>
+      </div>
+    </div>
+  </div>
+{{/if}}
